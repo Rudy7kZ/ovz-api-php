@@ -81,10 +81,24 @@ class ovzVPS
     public function set_ct_password($id, $password)
     {
         if(empty($id) || empty($password)){
-            throw new Exception("Missing ID field");
+            throw new Exception("Missing ID or password field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/update?id=".$id."&password=".$password);
+        if($call['status']){
+            return (true);
+        }
+        else
+            return (false);
+    }
+
+    public function set_hostname($id, $hostname)
+    {
+        if(empty($id) || empty($hostname)){
+            throw new Exception("Missing ID or hostname field");
+            return (false);
+        }
+        $call = $this->_call("/api/virtual_servers/update?id=".$id."&host_name=".$hostname);
         if($call['status']){
             return (true);
         }
