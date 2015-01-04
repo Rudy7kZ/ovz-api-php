@@ -21,12 +21,7 @@ class ovzVPS
         else
             throw new Exception("All fields are required !");
     }
-
-    public function list_nodes()
-    {
-        $this->_call("/api/hardware_servers/list");
-    }
-
+    
     public function get_ct_informations($id)
     {
         $return = array();
