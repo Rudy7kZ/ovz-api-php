@@ -41,6 +41,9 @@ class ovzVPS
 
     public function start_ct($id)
     {
+        if(empty($id)){
+            return (false);
+        }
         $call = $this->_call("/api/virtual_servers/start?id=".$id);
         if($call['status']){
             return (true);
@@ -51,6 +54,9 @@ class ovzVPS
 
     public function stop_ct($id)
     {
+        if(empty($id)){
+            return (false);
+        }
         $call = $this->_call("/api/virtual_servers/stop?id=".$id);
         if($call['status']){
             return (true);
@@ -61,6 +67,9 @@ class ovzVPS
 
     public function restart_ct($id)
     {
+        if(empty($id)){
+            return (false);
+        }
         $call = $this->_call("/api/virtual_servers/restart?id=".$id);
         if($call['status']){
             return (true);
@@ -71,6 +80,9 @@ class ovzVPS
 
     public function set_ct_password($id, $password)
     {
+        if(empty($id) || empty($password)){
+            return (false);
+        }
         $call = $this->_call("/api/virtual_servers/update?id=".$id."&password=".$password);
         if($call['status']){
             return (true);
@@ -81,6 +93,9 @@ class ovzVPS
 
     public function delete_ct($id)
     {
+        if(empty($id)){
+            return (false);
+        }
         $call = $this->_call("/api/virtual_servers/delete?id=".$id);
         if($call['status']){
             return (true);
