@@ -1,4 +1,10 @@
 <?php
+/*
+ * This class has been written by EnguerrandP for public release on github.com
+ * It is designed for interacting with ovz-webpanel and it's API.
+ * Still in development, this is first version, codes will be improved.
+ * If you think you can help, don't hesitate to code and post pull request.
+ */
 class ovzVPS
 {
     protected $host;
