@@ -5,6 +5,8 @@
  * Still in development, this is first version, codes will be improved.
  * If you think you can help, don't hesitate to code and post pull request.
  */
+error_reporting(0);
+
 class ovzVPS
 {
     protected $host;
@@ -19,9 +21,9 @@ class ovzVPS
             $this->password = $password;
         }
         else
-            throw new Exception("All fields are required !");
+            throw new Exception("Cannot construct, missing parameter");
     }
-    
+
     public function get_ct_informations($id)
     {
         $return = array();
@@ -37,6 +39,7 @@ class ovzVPS
     public function start_ct($id)
     {
         if(empty($id)){
+            throw new Exception("Missing ID field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/start?id=".$id);
@@ -50,6 +53,7 @@ class ovzVPS
     public function stop_ct($id)
     {
         if(empty($id)){
+            throw new Exception("Missing ID field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/stop?id=".$id);
@@ -63,6 +67,7 @@ class ovzVPS
     public function restart_ct($id)
     {
         if(empty($id)){
+            throw new Exception("Missing ID field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/restart?id=".$id);
@@ -76,6 +81,7 @@ class ovzVPS
     public function set_ct_password($id, $password)
     {
         if(empty($id) || empty($password)){
+            throw new Exception("Missing ID field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/update?id=".$id."&password=".$password);
@@ -89,6 +95,7 @@ class ovzVPS
     public function delete_ct($id)
     {
         if(empty($id)){
+            throw new Exception("Missing ID field");
             return (false);
         }
         $call = $this->_call("/api/virtual_servers/delete?id=".$id);
